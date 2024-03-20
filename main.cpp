@@ -1,5 +1,5 @@
-// Белоушко Елизавета ПИ 1 курс
-// В функцию DelNum добавлен try/catch блок. В функции main используется throw.
+// Р‘РµР»РѕСѓС€РєРѕ Р•Р»РёР·Р°РІРµС‚Р° РџР 1 РєСѓСЂСЃ
+// Р’ С„СѓРЅРєС†РёСЋ DelNum РґРѕР±Р°РІР»РµРЅ try/catch Р±Р»РѕРє. Р’ С„СѓРЅРєС†РёРё main РёСЃРїРѕР»СЊР·СѓРµС‚СЃСЏ throw.
 
 #include <iostream>  
 #include <ctime>  
@@ -13,7 +13,6 @@ public:
     MyException(Type report) {
         this->report = report;
     }
-    ~MyException() {}
 };
 
 template<typename Type>
@@ -31,7 +30,7 @@ public:
     }
 
     friend void DelNum(Array<Type>& arr) {
-        int m = 0; // считает кол-во делителей числа  
+        int m = 0; // СЃС‡РёС‚Р°РµС‚ РєРѕР»-РІРѕ РґРµР»РёС‚РµР»РµР№ С‡РёСЃР»Р°  
         for (int i = 0; i < arr.n; i++) {
             for (int k = 2; k <= arr.arr[i] / 2; k++) {
                 if (arr.arr[i] % k == 0) {
@@ -45,7 +44,6 @@ public:
         }
         cout << endl;
     }
-    
 
     template<typename Type>
     friend istream& operator>>(istream& in, Array<Type>& arr);
@@ -70,7 +68,7 @@ istream& operator>>(istream& in, Array<Type>& arr) {
 template<typename Type>
 ostream& operator<<(ostream& out, Array<Type>& arr) {
     srand(time(0));
-    cout << "Дан массив чисел: ";
+    cout << "Р”Р°РЅ РјР°СЃСЃРёРІ С‡РёСЃРµР»: ";
     for (int i = 0; i < arr.n; i++) {
         cout << arr.arr[i] << " ";
     }
@@ -79,9 +77,9 @@ ostream& operator<<(ostream& out, Array<Type>& arr) {
 }
 
 template<typename Type>
-void DelNum(Array<Type>& arr) { // блок try/catch
+void DelNum(Array<Type>& arr) { // Р±Р»РѕРє try/catch
     try {
-        int m = 0; // считает кол-во делителей числа  
+        int m = 0; // СЃС‡РёС‚Р°РµС‚ РєРѕР»-РІРѕ РґРµР»РёС‚РµР»РµР№ С‡РёСЃР»Р°  
         for (int i = 0; i < arr.n; i++) {
             for (int k = 2; k <= arr.arr[i] / 2; k++) {
                 if (arr.arr[i] % k == 0) {
@@ -96,10 +94,10 @@ void DelNum(Array<Type>& arr) { // блок try/catch
         cout << endl;
     }
     catch (MyException& e) {
-        cerr << "Ошибка" << endl;
+        cerr << "РћС€РёР±РєР°" << endl;
     }
     catch (exception& ex) {
-        cerr << "Ошибка" << endl;
+        cerr << "РћС€РёР±РєР°:" << ex.what() << endl;
     }
 }
 
@@ -107,10 +105,10 @@ void DelNum(Array<Type>& arr) { // блок try/catch
 int main() {
     setlocale(LC_ALL, "rus");
     int n;
-    cout << "Введите длину массива: ";
+    cout << "Р’РІРµРґРёС‚Рµ РґР»РёРЅСѓ РјР°СЃСЃРёРІР°: ";
     cin >> n;
 
-    if (n <= 0) throw exception("Длина массива должна быть больше нуля"); // throw
+    if (n <= 0) throw exception("Р”Р»РёРЅР° РјР°СЃСЃРёРІР° РґРѕР»Р¶РЅР° Р±С‹С‚СЊ Р±РѕР»СЊС€Рµ РЅСѓР»СЏ"); // throw
 
     Array<int>arr(n);
     cin >> arr;
